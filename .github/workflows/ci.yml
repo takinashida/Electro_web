@@ -29,22 +29,4 @@ jobs:
     - name: Run tests
       run: python manage.py test
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
 
-    steps:
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.9.1
-      with:
-        ssh-private-key: ${{ secrets.SSH_KEY }}
-
-    - name: Deploy
-      run: |
-        ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=120 -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          cd ~/projects/API_Library
-          git pull
-          source venv/bin/activate
-          pip install -r requirements.txt
-          sudo docker compose up -d --build
-        EOF
