@@ -184,21 +184,25 @@
 
 ##  Установка и запуск
 
-`git clone <repo_url> cd electronics_network python -m venv venv source venv/bin/activate pip install -r requirements.txt python manage.py migrate python manage.py createsuperuser python manage.py runserver`
+`git clone https://github.com/takinashida/Electro_web.git` 
+`cd Electro_web`
+`mkdir .env`
+`python -m venv venv` 
+`docker compose up --build`
 
 Админ-панель:
 
-`http://127.0.0.1:8000/admin/`
+`http://backend/admin/`
 
-API:
+API Документация:
 
-`http://127.0.0.1:8000/api/`
+`http://backend/api/schema/swagger/`
 
 ---
 
 ##  Используемые технологии
 
-- Python 3
+- Python 3.13
     
 - Django
     
